@@ -20,6 +20,7 @@ enum custom_keycodes {
   RAISE, // jumps to Raise if Lower is hold jumps to ADJUST 
   ARROW, // 
   ADJUST, // RESET and co
+  CTRLB,
 };
 
 // Fillers to make layering more clear
@@ -35,14 +36,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Shift |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |ARROW | Ctrl | Alt  | GUI  |Space | Lower|Enter |Raise |      |      |      |      |
+ * |ARROW | Ctrl | Alt  | GUI  |Space | Lower|Enter |Raise |Ctrl-B|      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_ortho_4x12(
    KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
    KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
    KC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC , \
-   ARROW,  KC_LCTL, KC_LALT, KC_LGUI, KC_SPC,   LOWER,  KC_ENT ,  RAISE,   _______, _______, _______,   _______  
+   ARROW,  KC_LCTL, KC_LALT, KC_LGUI, KC_SPC,   LOWER,  KC_ENT ,  RAISE,   CTRLB, _______, _______,   _______  
 ),
 
 /* Colemak
@@ -205,6 +206,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
+    case CTRLB:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL("b"));
+      } 
+      return false;
+      break;      
   }
   return true;
 }
