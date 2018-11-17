@@ -36,14 +36,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Shift |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |ARROW | Ctrl | Alt  | GUI  |Space | Lower|Enter |Raise |Ctrl-B|  -_  | =+   |      |
+ * |ARROW | Ctrl | Alt  | GUI  |Space | Lower|Lower |Enter |Ctrl-B|  -_  | =+   |Raise |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_ortho_4x12(
    KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
    KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
    KC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC , \
-   ARROW,  KC_LCTL, KC_LALT, KC_LGUI, KC_SPC,   LOWER,  KC_ENT ,  RAISE,   CTRLB, KC_MINUS, KC_EQUAL,   _______  
+   ARROW,  KC_LCTL, KC_LALT, KC_LGUI, KC_SPC,   LOWER,  LOWER , KC_ENT ,   CTRLB, KC_MINUS, KC_EQUAL,   RAISE  
 ),
 
 /* Colemak
@@ -64,21 +64,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ADJUST,  KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
 ),
 
-/* Lower  
+/* Lower 
  * ,-----------------------------------------------------------------------------------.
- * |      |      |  [   |  {   |  F11 |      |      | F12  | }    |  ]   |   _  | +    |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | |    |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |   `~ |   1! |   2@ |   3# |   4$ |   5% |   6^ |   7& |   8* |   9( |   0) | \    |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   F7 |  F8  |  F9  |  F10 | =    | 
+ * |      |      |   [  |  {   |  (   |      |      |  )   |   }  |   ]  |   -_ |  =+  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      | Next | Vol- | Vol+ |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_ortho_4x12( \
-  _______, _______,   KC_LBRC,   KC_LCBR,   KC_F11,  _______,  _______,KC_F12,KC_RCBR, KC_RBRC, KC_UNDS, KC_PLUS, \
   KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PIPE, \
-  _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7, KC_F8, KC_F9, KC_F10, KC_EQUAL, \
+  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLASH, \
+  _______,  _______, KC_LBRC, KC_LCBR, KC_LPRN, _______, _______, KC_RPRN, KC_RCBR,  KC_RBRC, KC_MINUS, KC_EQUAL, \
   _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, _______ \
 ),
 
@@ -88,16 +88,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |   `~ |   1! |   2@ |   3# |   4$ |   5% |   6^ |   7& |   8* |   9( |   0) | \    |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   F7 |  F8  |  F9  |  F10 |      | 
+ * |      |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   F7 |  F8  |  F9  |  F10 |F12   | 
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Next | Vol- | Vol+ |      |
+ * | F1   |  F2  |  F3  |  F4  |  F5  |  F6  |   F7 |  F8  |  F9  |  F10 | F11  | 
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_ortho_4x12( \
   _______,  _______, KC_LBRC, KC_LCBR, KC_F11, _______, _______, KC_F12, KC_RCBR,  KC_RBRC, KC_MINUS, KC_EQUAL, \
   KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLASH, \
-  _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7, KC_F8, KC_F9, KC_F10, _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, _______ \
+  _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7, KC_F8, KC_F9, KC_F10, KC_F12, \
+  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, _______ \
 ),
 
 /* Arrow
